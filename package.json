@@ -1,13 +1,13 @@
 {
   "dependencies": {
     "@hikyu/env": "^1.0.10",
+    "colors": "^1.4.0",
     "https": "^1.0.0",
     "readline": "^1.3.0"
   },
   "name": "@hikyu/cli-gpt",
   "version": "1.0.4",
   "main": "gpt.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +16,5 @@
   "description": "",
   "bin": {
     "gpt": "./gpt.js"
-  }  
+  }
 }

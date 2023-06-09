@@ -1,24 +1,29 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const path = require('path');
 const https = require('https');
 const readline = require('readline');
+const colors = require('colors');
 
 //* Token functions 
 const tokenFileExists = () => {
   try {
-    fs.accessSync('token.txt', fs.constants.F_OK);
+    const filePath = path.join(__dirname, 'token');
+    fs.accessSync(filePath, fs.constants.F_OK);
     return true;
   } catch (err) {
     return false;
   }
 };
 const saveTokenToFile = (token) => {
-  fs.writeFileSync('token.txt', token);
+  const filePath = path.join(__dirname, 'token');
+  fs.writeFileSync(filePath, token);
 };
 const readTokenFromFile = () => {
   try {
-    return fs.readFileSync('token.txt', 'utf8');
+    const filePath = path.join(__dirname, 'token');
+    return fs.readFileSync(filePath, 'utf8');
   } catch (err) {
     return null;
   }
@@ -54,6 +59,8 @@ const options = token => {
 }
 
 (async () => {
+  console.log(colors.gray('Thanks for using @hikyu/cli-gpt'));
+
   // Get token
   let token = readTokenFromFile();
   if(!token) token = await getToken();
@@ -69,7 +76,9 @@ function userInput(apiOptions) {
     input: process.stdin,
     output: process.stdout
   });
-  rl.question('> ', (message) => {
+  rl.question('👤 ', (message) => {
+
+    process.stdout.write('🤖 ');
 
     sendMessage(apiOptions, message, (res) => {
       if(!res) {
