@@ -5,7 +5,7 @@
     "readline": "^1.3.0"
   },
   "name": "@hikyu/cli-gpt",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "main": "gpt.js",
   "devDependencies": {},
   "scripts": {
